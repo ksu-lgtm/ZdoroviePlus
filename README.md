@@ -1,4 +1,4 @@
-# 🏥 Медицинский центр «Здоровье+»
+# Медицинский центр «Здоровье+»
 
 > **Сайт:** [https://ksu-lgtm.github.io/ZdoroviePlus](https://ksu-lgtm.github.io/ZdoroviePlus)
 
