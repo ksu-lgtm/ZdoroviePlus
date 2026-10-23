@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -89,7 +90,7 @@ const DashboardPage = () => {
               <h3>Записи к врачу</h3>
               <div id="appointmentsList">
                 {appointments.length === 0 ? (
-                  <p>У вас пока нет записей. <a href="/doctors">Записаться</a></p>
+                  <p>У вас пока нет записей. <Link to="/doctors">Записаться</Link></p>
                 ) : (
                   appointments.map(a => (
                     <div key={a.id} className="appointment-item">
@@ -113,7 +114,7 @@ const DashboardPage = () => {
               <h3>История госпитализаций</h3>
               <div id="hospitalizationsList">
                 {hospitalizations.length === 0 ? (
-                  <p>У вас пока нет госпитализаций. <a href="/inpatient">Записаться</a></p>
+                  <p>У вас пока нет госпитализаций. <Link to="/inpatient">Записаться</Link></p>
                 ) : (
                   hospitalizations.map(h => (
                     <div key={h.id} className="appointment-item">
