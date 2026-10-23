@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ZdoroviePlus/static/css/main.c50e737c.css",
-    "main.js": "/ZdoroviePlus/static/js/main.70a2343a.js",
+    "main.js": "/ZdoroviePlus/static/js/main.723d5760.js",
     "index.html": "/ZdoroviePlus/index.html",
     "main.c50e737c.css.map": "/ZdoroviePlus/static/css/main.c50e737c.css.map",
-    "main.70a2343a.js.map": "/ZdoroviePlus/static/js/main.70a2343a.js.map"
+    "main.723d5760.js.map": "/ZdoroviePlus/static/js/main.723d5760.js.map"
   },
   "entrypoints": [
     "static/css/main.c50e737c.css",
-    "static/js/main.70a2343a.js"
+    "static/js/main.723d5760.js"
   ]
 }
