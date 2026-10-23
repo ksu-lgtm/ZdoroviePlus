@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import BookingModal from '../components/doctors/BookingModal';
 
 const doctorsData = [
   { id: 1, name: "Анна Сергеевна Иванова", specialty: "Терапевт", experience: 12, rating: 4.8 },
@@ -13,6 +15,8 @@ const DoctorsPage = () => {
   const [search, setSearch] = useState('');
   const [specialty, setSpecialty] = useState('all');
   const [expFilter, setExpFilter] = useState('all');
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const navigate = useNavigate();
 
   const getStarRating = (rating) => {
     let stars = '';
@@ -37,8 +41,15 @@ const DoctorsPage = () => {
     return matchSearch && matchSpecialty && matchExp;
   });
 
-  const openBooking = (doctorName, specialty) => {
-    alert(`Запись к ${doctorName} (${specialty})\nФункция записи будет доступна после авторизации`);
+  const openBooking = (doctor) => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      if (window.confirm('Для записи к врачу необходимо войти в систему. Перейти на страницу входа?')) {
+        navigate('/login');
+      }
+      return;
+    }
+    setSelectedDoctor(doctor);
   };
 
   return (
@@ -89,12 +100,18 @@ const DoctorsPage = () => {
                 <div className="doctor-specialty">{doc.specialty}</div>
                 <div className="doctor-experience"><i className="fas fa-briefcase"></i> Стаж {doc.experience} лет</div>
                 <div className="rating" dangerouslySetInnerHTML={{ __html: getStarRating(doc.rating) }}></div>
-                <button className="btn-book" onClick={() => openBooking(doc.name, doc.specialty)}>Записаться</button>
+                <button className="btn-book" onClick={() => openBooking(doc)}>Записаться</button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <BookingModal
+        isOpen={selectedDoctor !== null}
+        doctor={selectedDoctor}
+        onClose={() => setSelectedDoctor(null)}
+      />
     </>
   );
 };
